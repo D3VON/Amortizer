@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Amortizer</string>
+    <string name="action_settings">Settings</string>
+    <string name="instructions">Enter 3 items.\n Leave one blank.\nThen click Calculate button.</string>
+    <string name="princlabel">Principal Amount</string>
+    <string name="ratelabel">Interest Rate (%)</string>
+    <string name="termlabel">Term (months)</string>
+    <string name="paymentlabel">Monthly Payment</string>
+    <string name="button_calc">Calculate</string>
+    <string name="princhint">50000.00</string>
+    <string name="ratehint">4.5</string>
+    <string name="termhint">120</string>
+    <string name="action_help">Help</string>
+    <string name="action_about">About</string>
+    
+
+</resources>
