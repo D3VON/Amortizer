@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 //import android.content.Intent;
 import android.util.Log;
-//import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,17 +13,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements InputFragment.InputFragmentListener{
 
 	protected static final String TAG = "Amortizer";
-	protected Amortization AmortObj = new Amortization(); 
+	protected Amortization AmortObj = new Amortization();
 
-	@Override
+    // implementing method from interface InputFragment.InputFragmentListener
+    // This gets called by the InputFragment when the user clicks the "Calculate" button.
+    @Override
+    public void createResult(String princ, String term, String rate, String pmt) {
+
+    }
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		
+/* PUT INTO InputFragment.java
 		// Initialize UI elements
 		final EditText principal 	= (EditText)findViewById(R.id.principal);
 		final EditText rate 		= (EditText)findViewById(R.id.rate);
@@ -32,10 +38,11 @@ public class MainActivity extends Activity {
 		final EditText payment 		= (EditText)findViewById(R.id.payment);
 		final Button   button_calc 	= (Button)findViewById(R.id.button_calc);
 		
-		
+*/
 		
 		// Link UI elements to actions
-		button_calc.setOnClickListener(new Button.OnClickListener(){
+		button_calc.setOnClickListener(
+                new Button.OnClickListener(){
 			@SuppressLint("DefaultLocale") // locale info makes formating decimal wonkie regionally
 			@Override
 			public void onClick(View v){
@@ -100,33 +107,7 @@ public class MainActivity extends Activity {
 						payment.setText(paym); // update what's displayed to the user
 					}
 				}	
-					
-					// pass data into Amortizer class
-					// NOTE: should be done after receiving 
-					// all combinations of 3 data items
-					//Intent calc = new Intent()
-				//try {
-					// TO-DO:
-					// Launch Activity Two
-					// Hint: use Context's startActivity() method
-	
-					// Create an intent stating which Activity you would like to start
-										/*
-										params: 1. Context (which is a parent of
-										           the Activity class, which is
-										           a parent of this class, so it's OK
-										           to use this class as Context)
-										           
-										        2. The Activity to be started by the call
-										           to startActivity.
-										          */
-					//Intent doCalculation = new Intent(MainActivity.this,Amortization.class);
-					// Launch the Activity using the intent
-					//startActivity(doCalculation);
-				//}catch(Exception e){
-				//	Log.e(TAG,e.toString());
-				//}
-				
+
 			}
 
 		});

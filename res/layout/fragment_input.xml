@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/instruction_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/instructions"
+        android:textColor="#111111"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/button_calc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/instruction_TextView"
+        android:text="@string/button_calc"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/princlabel"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/button_calc" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ratelabel"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/principal"
+        android:layout_below="@+id/button_calc" />
+    <EditText
+        android:id="@+id/principal"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_below="@+id/textView2"  />
+
+    <EditText
+        android:id="@+id/rate"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_toRightOf="@+id/principal"
+        android:layout_below="@+id/textView3" />
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/termlabel"
+        android:layout_below="@+id/principal"
+        android:layout_marginTop="15dp" />
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/paymentlabel"
+        android:layout_below="@+id/principal"
+        android:layout_toRightOf="@+id/principal"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"/>
+
+    <EditText
+        android:id="@+id/term"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="5"
+        android:layout_below="@+id/textView4" />
+
+
+    <EditText
+        android:id="@+id/payment"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_below="@+id/textView4"
+        android:layout_toRightOf="@+id/principal"
+        android:layout_marginLeft="15dp"/>
+
+</RelativeLayout>
