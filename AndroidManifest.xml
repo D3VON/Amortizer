@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.d3von.amortizer"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="com.d3von.amortizer">
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="23" />
-
+        android:targetSdkVersion="21" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light" >
         <activity
-            android:name="com.d3von.amortizer.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

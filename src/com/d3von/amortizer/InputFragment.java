@@ -1,58 +1,33 @@
 package com.d3von.amortizer;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.util.Log;
 
-//import android.net.Uri;
-=
-
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link InputFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link InputFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class InputFragment extends Fragment {
 
+    protected static final String TAG = "Amortizer";
+    protected Amortization AmortObj = new Amortization();
 
-    // Initialize UI elements (assign variables in onCreateView)
-    public static EditText principal;
-    public static EditText rate;
-    public static EditText term;
-    public static EditText payment;
+    // Initialize UI elements (assign values in onCreateView)
+    private static EditText principal;
+    private static EditText rate;
+    private static EditText term;
+    private static EditText payment;
 
-    private InputFragmentListener activityCommander; // theNewBoston has it this way instead
-    // private OnFragmentInteractionListener mListener; // Android Studio's default version
+    private InputFragmentListener activityCommander;
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
-    }
-     */
 
     // theNewBoston's way for the above interface:
     public interface InputFragmentListener{
-        public void createResult(String princ, String term, String rate, String pmt);
+        public void createResult(String resultPhrase, String prin, String intr, String peri, String paym);
         /* to be implemented by MainActivity.java
          * responsible for receiving those text values from InputFragment.java,
          * processing the values input by the user, and passing the result to
@@ -60,39 +35,30 @@ public class InputFragment extends Fragment {
          * */
     }
 
-
-
-
-
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment InputFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static InputFragment newInstance(String param1, String param2) {
-        InputFragment fragment = new InputFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public InputFragment() {
+        // Default constructor
     }
 
-    public InputFragment() {
-        // Required empty public constructor
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            activityCommander = (InputFragmentListener) activity; // theNewBoston's naming convention
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement InputFragmentListener");
+        }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout. fragment_input, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_input, container, false);
 
         principal 	= (EditText) view.findViewById(R.id.principal);
         rate 		= (EditText) view.findViewById(R.id.rate);
@@ -110,7 +76,9 @@ public class InputFragment extends Fragment {
         );
 
         return view;
-    } // end onCreateView()
+
+    }// end onCreateView()
+
 
     // called when the "Calculate" button is clicked
     /*
@@ -124,6 +92,7 @@ public class InputFragment extends Fragment {
         String intr = rate.getText().toString();
         String peri = term.getText().toString();
         String paym = payment.getText().toString();
+        String resultPhrase = "";
 
 
         boolean A = prin.trim().equals("");
@@ -151,15 +120,17 @@ public class InputFragment extends Fragment {
                 prin = String.format( "%.2f", princ ); // format to financial style
                 Log.v(TAG, prin); // for testing satisfaction
                 principal.setText(prin); // update what's displayed to the user
+                resultPhrase = "Principal Amount is " + principal.getText().toString();
             }
             else if(B){
                 double princ 	= Double.parseDouble(prin);
                 int period 	= Integer.parseInt(peri);
                 double pmt 		= Double.parseDouble(paym);
                 double interest	= AmortObj.calculateInterest(princ, period, pmt);
-                intr = String.format( "%.2f", interest ); // format to financial style
+                intr = String.format("%.2f", interest ); // format to financial style
                 Log.v(TAG, intr); // for testing satisfaction
                 rate.setText(intr); // update what's displayed to the user
+                resultPhrase = "Result: Interest Rate is " + rate.getText().toString();
             }
             else if(C){
                 double princ 	= Double.parseDouble(prin);
@@ -169,6 +140,7 @@ public class InputFragment extends Fragment {
                 peri = String.format( "%d", period ); // format to financial style
                 Log.v(TAG, peri); // for testing satisfaction
                 term.setText(peri); // update what's displayed to the user
+                resultPhrase = "Result: Term (in months) is " + term.getText().toString();
             }
             else {
                 double princ 	= Double.parseDouble(prin);
@@ -178,51 +150,27 @@ public class InputFragment extends Fragment {
                 paym = String.format( "%.2f", pmt ); // format to financial style
                 Log.v(TAG, paym); // for testing satisfaction
                 payment.setText(paym); // update what's displayed to the user
+                resultPhrase = "Result: Payment is " + payment.getText().toString();
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
         // send the data to MainActivity.java
         // NOTE: this obj and method are implemented in MainActivity.java, though
         // the interface and method signature are declared in this class.
-        activityCommander.createResult(principal.toString(),term.toString(),rate.toString(),payment.toString());
+        activityCommander.createResult(resultPhrase, prin, intr, peri, paym);
     }
-/* COOL: THEIR VERSION OF onCalcButtonClicked() see right above here
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-*/
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            // Android Studio's default: mListener = (OnFragmentInteractionListener) activity;
-            activityCommander = (InputFragmentListener) activity; // theNewBoston's naming convention
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+    public void clearFields(){
+        principal.setText("");
+        payment.setText("");
+        term.setText("");
+        rate.setText("");
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        activityCommander = null;
     }
 
 

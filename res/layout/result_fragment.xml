@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gridlayout"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/result_fragment"
+    android:tag="resultfragtag" >
+    <!-- android:background="@drawable/pic" (don't include ".jpg") -->
 
     <TextView
         android:id="@+id/resultText"
@@ -10,49 +12,47 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/result_text"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:gravity="fill_horizontal"
-        android:layout_gravity="right" />
+        android:textColor="@color/material_deep_teal_500"
+        android:layout_alignParentTop="true"
+        android:gravity="end"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp" />
 
-                        <Space
-                            android:layout_width="200dp"
-                            android:layout_height="10dp"
-                            android:layout_row="1"
-                            android:layout_column="0" />
 
     <Button
         android:id="@+id/button_ClearAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/clear_button"
-        android:layout_row="2"
-        android:layout_column="0"
-        android:layout_gravity="right" />
+        android:layout_below="@id/resultText"
+        android:gravity="center|end"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="italic"
         android:text="@string/describe_the_button"
-        android:layout_row="3"
-        android:layout_column="0"
-        android:layout_gravity="right"/>
-    <Space
-        android:layout_width="200dp"
-        android:layout_height="20dp"
-        android:layout_row="4"
-        android:layout_column="0" />
-
+        android:layout_below="@id/button_ClearAll"
+        android:gravity="fill_horizontal|end"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
     <Button
         android:id="@+id/button_ShowAmort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/show_amort_button"
-        android:layout_row="5"
-        android:layout_column="0"
-        android:layout_gravity="right" />
+        android:layout_below="@id/textView6"
+        android:gravity="end"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
 
 
-</GridLayout>
+</RelativeLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+    
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back_button"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    
+    <Button
+        android:id="@+id/button_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/share_button"
+        android:layout_marginTop="10dp" 
+        android:gravity="end"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+    
+    <TextView
+        android:id="@+id/heading1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+   	 	android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="5dp"
+        android:textColor="#111111"
+        android:layout_below="@id/button_back" />
+    <TextView
+        android:id="@+id/heading2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+   	 	android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#111111"
+        android:layout_below="@id/heading1" />
+    <TextView
+        android:id="@+id/heading3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+   	 	android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#111111"
+        android:layout_below="@id/heading2" />
+    <TextView
+        android:id="@+id/heading4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+   	 	android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#111111"
+        android:layout_below="@id/heading3" />
+    <TextView
+        android:id="@+id/heading5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+   	 	android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#111111"
+        android:layout_below="@id/heading4" />
+    
+    
+	<ScrollView
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:scrollbars="vertical"
+        android:layout_below="@id/heading5" >
+	
+	    <TableLayout
+	        android:id="@+id/the_table"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:stretchColumns="*" >
+	        <!--  android:background="@color/material_deep_teal_200" -->
+	
+	    </TableLayout>
+	</ScrollView>
+</RelativeLayout>

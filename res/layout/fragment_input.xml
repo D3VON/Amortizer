@@ -1,48 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_input" >
 
 
     <TextView
-        android:id="@+id/instruction_TextView"
+        android:id="@+id/instruction_Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/instructions"
-        android:textColor="#111111"
         android:layout_marginTop="5dp"
+        android:textColor="#111111"
         android:gravity="center_horizontal" />
-
-    <Button
-        android:id="@+id/button_calc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/instruction_TextView"
-        android:text="@string/button_calc"
-        android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true"/>
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/princlabel"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/button_calc" />
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/instruction_Text" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ratelabel"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
         android:layout_toRightOf="@+id/principal"
-        android:layout_below="@+id/button_calc" />
+        android:layout_below="@+id/instruction_Text" />
     <EditText
         android:id="@+id/principal"
-        android:layout_width="170dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
@@ -50,7 +43,7 @@
 
     <EditText
         android:id="@+id/rate"
-        android:layout_width="170dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:inputType="numberDecimal"
@@ -65,6 +58,7 @@
         android:layout_height="wrap_content"
         android:text="@string/termlabel"
         android:layout_below="@+id/principal"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="15dp" />
 
 
@@ -75,12 +69,12 @@
         android:text="@string/paymentlabel"
         android:layout_below="@+id/principal"
         android:layout_toRightOf="@+id/principal"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"/>
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"/>
 
     <EditText
         android:id="@+id/term"
-        android:layout_width="170dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="5"
@@ -89,12 +83,20 @@
 
     <EditText
         android:id="@+id/payment"
-        android:layout_width="170dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
         android:layout_below="@+id/textView4"
         android:layout_toRightOf="@+id/principal"
         android:layout_marginLeft="15dp"/>
+
+    <Button
+        android:id="@+id/button_calc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/term"
+        android:text="@string/button_calc"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
